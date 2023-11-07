@@ -1,4 +1,3 @@
-
 def balanced_brackets(my_string: str):
     cleared_string = ""
     for i in my_string:
@@ -19,8 +18,6 @@ def balanced_brackets(my_string: str):
         return False
     # remove first and last character
     return balanced_brackets(cleared_string[1:-1])
-
-
 
 
 ok = balanced_brackets("([([])])")
