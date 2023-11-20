@@ -32,13 +32,13 @@ class OrderBook:
         pass
 
     def all_orders(self):
-        return list(set((self.entire_list)))
+        return list(self.entire_list)
 
     def programmers(self):
         name_list = []
         for name in self.entire_list:
             name_list.append(name.programmer)
-        return list(set(name_list))
+        return sorted(list(set(name_list)))
         pass
 
 
@@ -50,3 +50,8 @@ orders.add_order("program app for practising mathematics", "Adele", 100)
 
 for order in orders.all_orders():
     print(order)
+
+print()
+
+for programmer in orders.programmers():
+    print(programmer)
