@@ -85,6 +85,3 @@ class OrderBook:
         return finished, unfinished_Tasks, hours, Unfinished_hours
 
 
-t = OrderBook()
-t.add_order("program webstore", "Andy", 10)
-t.status_of_programmer("JohnDoe")
