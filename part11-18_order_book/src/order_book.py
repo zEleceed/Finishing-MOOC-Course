@@ -41,17 +41,50 @@ class OrderBook:
         return sorted(list(set(name_list)))
         pass
 
+    def mark_finished(self, id: int):
+        matching = False
+        for name in self.entire_list:
+            if name.id == id:
+                matching = True
+                name.mark_finished()
+                break
+        if not matching:
+            raise ValueError
 
-orders = OrderBook()
-orders.add_order("program webstore", "Adele", 10)
-orders.add_order("program mobile app for workload accounting", "Eric", 25)
-orders.add_order("program app for practising mathematics", "Adele", 100)
+        pass
+
+    def finished_orders(self):
+        return [order for order in self.entire_list if order.finished]
+
+    def unfinished_orders(self):
+        return [order for order in self.entire_list if not order.finished]
+
+    def status_of_programmer(self, programmer: str):
+        all_tasks = []
+        found = False
+        for programmers_name in self.entire_list:
+            if programmers_name.programmer == programmer:
+                all_tasks.append(programmers_name)
+                found = True
+
+        if not found:
+            raise ValueError
+
+        finished = 0
+        unfinished_Tasks = 0
+        hours = 0
+        Unfinished_hours = 0
+        for i in all_tasks:
+            if i.finished:
+                finished += 1
+                hours += i.workload
+            elif not i.finished:
+                unfinished_Tasks += 1
+                Unfinished_hours += i.workload
+
+        return finished, unfinished_Tasks, hours, Unfinished_hours
 
 
-for order in orders.all_orders():
-    print(order)
-
-print()
-
-for programmer in orders.programmers():
-    print(programmer)
+t = OrderBook()
+t.add_order("program webstore", "Andy", 10)
+t.status_of_programmer("JohnDoe")
