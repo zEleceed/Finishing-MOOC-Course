@@ -7,4 +7,13 @@ class CourseAttempt:
     def __str__(self):
         return f"{self.student_name}, grade for the course {self.course_name} {self.grade}"
 
+
 # Write your solution here
+def names_of_students(attempts: list):
+    return list(map(lambda name: name.student_name, attempts))
+
+
+def course_names(attempts: list):
+    return list(set(map(lambda student: student.course_name, attempts)))
+
+
